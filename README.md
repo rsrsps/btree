@@ -28,11 +28,11 @@ Opening an existing tree
 ### [Insertion](https://github.com/3fps/btree/wiki/Insertion)
 
 The tree's insert operation expects a string-typed key and binary value. If the key already exists,
-the old value will be replaced with the new one
+the old value will be replaced with the new one. The `Insert` function returns the byte-offset location of the new value.
 
     key := "name"
     val := []byte("John Appleseed")
-    err := tree.Insert(key, val)
+    valLoc, err := tree.Insert(key, val)
 
 ### [Find](https://github.com/3fps/btree/wiki/Find)
 To look for a value in the tree, a case-sensitive key is required. If the key does not exist (or soft deleted), it'll return `nil`:
