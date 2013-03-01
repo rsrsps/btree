@@ -8,20 +8,24 @@ Consequently, the data is split into two files: a key file and a value file.
 
 A tree can be in *read-only* mode or *read-write* mode. 
 
-### Initialization
+### [Initialization](https://github.com/3fps/btree/wiki/Initialization)
 
 Creating a new tree will return a tree in *read-write* mode. If the data files exist, they will be truncated
 
     order := 10 // order is the maximum number of child-nodes that each node can have
     tree, err := btree.New("/data/keys.b", "/data/vals.b", order)
     
+    
 Opening an existing tree
 
     // btree.READONLY | btree.READWRITE
     tree, err := btree.Open("/data/keys.b", "/data/vals.b", btree.READONLY)
 
-### Insertion 
-[Implementation details](https://github.com/3fps/btree/wiki/Insertion)
+Do not forget to close the tree
+    
+    err := tree.Close()
+
+### [Insertion](https://github.com/3fps/btree/wiki/Insertion)
 
 The tree's insert operation expects a string-typed key and binary value. If the key already exists,
 the old value will be replaced with the new one
