@@ -10,5 +10,10 @@ A tree can be in *read-only* mode or *read-write* mode.
 
 Creating a new tree will return a tree in *read-write* mode. If the data files exist, they will be truncated:
 
-    tree, err := btree.New("/data/keys.b", "/data/vals.b")
+    order := 10 // order is the maximum number of child-nodes that each node can have
+    tree, err := btree.New("/data/keys.b", "/data/vals.b", order)
     
+Opening an existing tree:
+
+    // btree.READONLY | btree.READWRITE
+    tree, err := btree.Open("/data/keys.b", "/data/vals.b", btree.READONLY)
