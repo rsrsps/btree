@@ -21,7 +21,7 @@ Opening an existing tree
     // btree.READONLY | btree.READWRITE
     tree, err := btree.Open("/data/keys.b", "/data/vals.b", btree.READONLY)
 
-Do not forget to close the tree
+**Do not forget to close the tree**
     
     err := tree.Close()
 
@@ -33,3 +33,16 @@ the old value will be replaced with the new one
     key := "name"
     val := []byte("John Appleseed")
     err := tree.Insert(key, val]
+
+### [Find](https://github.com/3fps/btree/wiki/Find)
+To look for a value in the tree, a case-sensitive key is required. If the key does not exist (or soft deleted), it'll return `nil`:
+
+    var val []byte = tree.Find("name")
+    if val != nil {
+      fmt.Println(string(val))
+    }
+
+### [Deletion](https://github.com/3fps/btree/wiki/Deletion)
+Because key deletion tend to require a lot of change in the tree structure, this implementation only support soft-delete. Soft-delete marks a key as deleted, but it still remains in the tree structure.
+
+    err := tree.SoftDelete("name")
