@@ -32,7 +32,7 @@ the old value will be replaced with the new one
 
     key := "name"
     val := []byte("John Appleseed")
-    err := tree.Insert(key, val]
+    err := tree.Insert(key, val)
 
 ### [Find](https://github.com/3fps/btree/wiki/Find)
 To look for a value in the tree, a case-sensitive key is required. If the key does not exist (or soft deleted), it'll return `nil`:
