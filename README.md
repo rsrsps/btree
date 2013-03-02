@@ -10,15 +10,10 @@ A tree can be in *read-only* mode or *read-write* mode.
 
 ### [Initialization](https://github.com/3fps/btree/wiki/Initialization)
 
-Creating a new tree will return a tree in *read-write* mode. If the data files exist, they will be truncated
-
-    order := 10 // order is the maximum number of child-nodes that each node can have
-    tree, err := btree.New("/data/keys.b", "/data/vals.b", order)
-    
-    
-Opening an existing tree
+A tree needs to be open being used. If the files do exist, they will be created with the given order. If the files are not in proper format, an error will return. Otherwise, the tree header and all the keys will be loaded into memory.
 
     // btree.READONLY | btree.READWRITE
+    tree = &btree.Tree{Order: 128}
     tree, err := btree.Open("/data/keys.b", "/data/vals.b", btree.READONLY)
 
 **Do not forget to close the tree**
