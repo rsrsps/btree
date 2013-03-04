@@ -65,7 +65,7 @@ func TestCreateNewTree(t *testing.T) {
 
 	n, err = fval.ReadAt(buff, 0)
 	if n != int(HEADER_SIZE) {
-		t.Errorf("Key header file only has %d bytes instead of %d as expected.", n, HEADER_SIZE)
+		t.Errorf("Value header file only has %d bytes instead of %d as expected.", n, HEADER_SIZE)
 		t.FailNow()
 	}
 
